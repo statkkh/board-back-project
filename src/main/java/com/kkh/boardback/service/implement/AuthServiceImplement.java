@@ -33,14 +33,14 @@ public class AuthServiceImplement implements AuthService{
             String nickname = dto.getNickname();
             String telNumber = dto.getTelNumber();
             // description : 이메일중복, 전화번호중복, 비밀번호 중복 //
-             boolean hasEmail = userRepository.existByEmail(email);
+             boolean hasEmail = userRepository.existsByEmail(email);
              if(hasEmail) return SignUpResponseDto.duplicatedEmail();
              
              boolean hasTelnumber = userRepository.existsByTelNumber(telNumber);
              if(hasTelnumber) return SignUpResponseDto.duplicatedTelNumber();
 
              
-            boolean hasNickname = userRepository.existByNickname(nickname);
+            boolean hasNickname = userRepository.existsByNickname(nickname);
             if(hasNickname) return SignUpResponseDto.duplicatedNickname();
 
             String password = dto.getPassword();
