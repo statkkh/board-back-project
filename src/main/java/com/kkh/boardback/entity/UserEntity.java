@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.kkh.boardback.dto.request.auth.SignUpRequestDto;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,5 +25,14 @@ public class UserEntity {
     private String address;
     private String addressDetail;
     private boolean agreedPersonal;
-    private String profileImageUrl;    
+    private String profileImageUrl;
+    
+    public UserEntity(SignUpRequestDto dto){
+        this.email = dto.getEmail();
+        this.nickname = dto.getNickname();
+        this.telNumber = dto.getTelNumber();
+        this.address = dto.getAddress();
+        this.addressDetail = dto.getAddressDetail();
+        this.agreedPersonal =dto.getAgreedPersonal();
+    }
 }

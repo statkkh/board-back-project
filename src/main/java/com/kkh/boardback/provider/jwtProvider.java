@@ -14,7 +14,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtProvider {
     
-    @Value("${secret-key }")
+    @Value("${secret-key}")
     private String secretkey;
 
     public String create(String email){
@@ -28,7 +28,7 @@ public class JwtProvider {
     }
 
     public String validate(String jwt){
-        String email = jwt;
+        String email = null;
         try {
 
             Claims claims = Jwts.parser()

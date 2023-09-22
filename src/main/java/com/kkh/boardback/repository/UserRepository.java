@@ -7,5 +7,11 @@ import com.kkh.boardback.entity.UserEntity;
 
 @Repository
 public interface UserRepository  extends  JpaRepository< UserEntity, String >{
+    // code message
+    boolean existByEmail(String email);
+    boolean existByNickname(String nickname);
+    boolean existsByTelNumber(String telNumber);
+    
+    
     
 }
