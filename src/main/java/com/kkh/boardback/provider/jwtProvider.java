@@ -43,7 +43,7 @@ public class JwtProvider {
             return null;
         }
 
-        return null;
+        return email;
     }
 
 }

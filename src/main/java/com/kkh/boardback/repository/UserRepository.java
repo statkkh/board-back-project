@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kkh.boardback.entity.UserEntity;
 
+
 @Repository
 public interface UserRepository  extends  JpaRepository< UserEntity, String >{
     // code message
@@ -12,6 +13,8 @@ public interface UserRepository  extends  JpaRepository< UserEntity, String >{
     boolean existsByNickname(String nickname);
     boolean existsByTelNumber(String telNumber);
     
+    
+    UserEntity findByEmail(String email);
     
     
 }

@@ -8,7 +8,8 @@ public interface ResponseCode {
     String DUPLICATED_NICKNAME = "DN";  
     String DUPLICATED_TELNUMBER= "DT";
     String DATABASE_ERROR = "DBE";
-    
+    String SIGN_IN_FAILED = "SF";
     // String  = "Database Error";
+    String NOT_EXIST_USER = "NU";
 
 }
