@@ -13,6 +13,7 @@ import lombok.Getter;
 @Getter
 //  생성자 직접 작성 //
 public class GetSignInUserResponseDto extends ResponseDto {
+
     private String email;
     private String nickname;
     private String profileImage;
@@ -32,7 +33,5 @@ public class GetSignInUserResponseDto extends ResponseDto {
     public static ResponseEntity<ResponseDto> notExistUser(){
         ResponseDto result  = new ResponseDto(ResponseCode.NOT_EXIST_USER, ResponseMessage.NOT_EXIST_USER );
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);        
-
     }
-
 }

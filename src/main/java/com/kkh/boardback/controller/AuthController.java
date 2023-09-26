@@ -1,4 +1,4 @@
-package com.kkh.boardback.contoller;
+package com.kkh.boardback.controller;
 
 import javax.validation.Valid;
 
@@ -17,10 +17,10 @@ import com.kkh.boardback.service.AuthService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("api/v1/auth")
+@RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
-
 public class AuthController {
+    
     private final AuthService authService;
     
     @PostMapping("/sign-up")
@@ -39,6 +39,4 @@ public class AuthController {
         return response;
     }
 
-
-    
 }

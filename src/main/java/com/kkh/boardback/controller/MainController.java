@@ -1,4 +1,4 @@
-package com.kkh.boardback.contoller;
+package com.kkh.boardback.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
