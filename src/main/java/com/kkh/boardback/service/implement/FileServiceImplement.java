@@ -22,19 +22,19 @@ public class FileServiceImplement implements FileService {
     
     @Override
     public String upload(MultipartFile file) {
-        // description : 파일 일 비어있는지 검증 
+        // description : 파일 일 비어있는지 검증 //
         if(file.isEmpty()) return null;
-        // description :  원본 파일명
+        // description :  원본 파일명 //
         String originFilename = file.getOriginalFilename();
         // description : 파일 확장가 구하기 //
         String extension =originFilename.substring(originFilename.lastIndexOf("."));
         // description :  파일 명 변경 UUID 형식의 임의의 파일명 생성 //
         String uuid = UUID.randomUUID().toString();
         // description : UUID형식의 파일명 + 확장자로 새로운 파일명 생성 //
-        String savedFilename = uuid + extension;
+        String saveFilename = uuid + extension;
 
-        // description :저장할 경로 //
-        String savePath = filepath + savedFilename;
+        // description : 저장할 경로 생성 //
+        String savePath = filepath + saveFilename;
 
         try {
             file.transferTo(new File(savePath));
@@ -45,7 +45,7 @@ public class FileServiceImplement implements FileService {
             return null;
         }
 
-        String url = fileUrl + savedFilename;
+        String url = fileUrl + saveFilename;
         return url;
 
     }
