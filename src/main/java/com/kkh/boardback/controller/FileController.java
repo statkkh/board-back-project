@@ -34,8 +34,8 @@ public class FileController {
     public Resource getFile(
         @PathVariable("/fileName") String fileName
     ){  
-        
-        return null;
+        Resource resource = fileService.getFile(fileName);
+        return resource;
     } 
 
 

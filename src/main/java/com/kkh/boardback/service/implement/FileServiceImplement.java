@@ -5,6 +5,8 @@ import java.util.UUID;
 
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,17 +30,16 @@ public class FileServiceImplement implements FileService {
         String extension =originFilename.substring(originFilename.lastIndexOf("."));
         // description :  파일 명 변경 UUID 형식의 임의의 파일명 생성 //
         String uuid = UUID.randomUUID().toString();
-        // UUID형식의 파일명 + 확장자로 새로운 파일명 생성 //
+        // description : UUID형식의 파일명 + 확장자로 새로운 파일명 생성 //
         String savedFilename = uuid + extension;
 
-        // 저장할 경로 //
+        // description :저장할 경로 //
         String savePath = filepath + savedFilename;
 
         try {
             file.transferTo(new File(savePath));
             
-            
-
+        
         } catch (Exception exception) {
             exception.printStackTrace();
             return null;
@@ -47,6 +48,23 @@ public class FileServiceImplement implements FileService {
         String url = fileUrl + savedFilename;
         return url;
 
+    }
+
+    @Override
+    public Resource getFile(String fileName) {
+
+        Resource resource = null;
+        
+        // description : 파일 저장 경로에서 파일명에 해당하는 파일 불러오기//
+        try {
+            resource = new UrlResource("file:" + filepath + fileName);    
+            
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return null;
+        }
+
+        return resource;
     }
     
 
