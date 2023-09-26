@@ -1,7 +1,5 @@
 package com.kkh.boardback.dto.response.user;
 
-import java.net.ResponseCache;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -33,7 +31,7 @@ public class GetUserResponseDto  extends ResponseDto{
     }
 
     public static ResponseEntity<ResponseDto> notExist(UserEntity userEntity){
-        
+
         ResponseDto result = new  ResponseDto(ResponseCode.NOT_EXIST_USER, ResponseMessage.NOT_EXIST_USER);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
     }
