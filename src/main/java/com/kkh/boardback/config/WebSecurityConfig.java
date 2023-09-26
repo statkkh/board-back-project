@@ -36,7 +36,7 @@ public class WebSecurityConfig {
                 .httpBasic().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers("/", "api/v1/auth/**", "/api/v1/search/**").permitAll()
+                .antMatchers("/","*/file/**", "/api/v1/auth/**", "/api/v1/search/**" ).permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/board/**", "/api/v1/user/*","/file/image/*").permitAll()
                 .anyRequest().authenticated().and()
                 .exceptionHandling().authenticationEntryPoint(new FailedAuthenticationEntryPoint());
@@ -57,7 +57,6 @@ class FailedAuthenticationEntryPoint implements AuthenticationEntryPoint{
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.getWriter().write("{\"code\": \"AF\", \"message\": \"Autorization Failed.\"}");        
         
-
     }
 
 }

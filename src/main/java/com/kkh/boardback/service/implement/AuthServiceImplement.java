@@ -17,8 +17,8 @@ import com.kkh.boardback.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class AuthServiceImplement implements AuthService{
 
     private final UserRepository userRepository;   
@@ -34,7 +34,7 @@ public class AuthServiceImplement implements AuthService{
             String email = dto.getEmail();
             String nickname = dto.getNickname();
             String telNumber = dto.getTelNumber();
-            // description : 이메일중복, 전화번호중복, 비밀번호 중복 //
+            // description : 이메일중복,닉네임 중복  전화번호중복, 비밀번호 중복 //
             boolean hasEmail = userRepository.existsByEmail(email);
              if(hasEmail) return SignUpResponseDto.duplicatedEmail();
              
@@ -47,7 +47,7 @@ public class AuthServiceImplement implements AuthService{
             String password = dto.getPassword();
             String encodedPassword = passwordEncoder.encode(password);
 
-            // ! 암호화된 코드로  
+            // description: 비밀번호를 평문으로 된  암호화된 코드로 변경 //
             dto.setPassword(encodedPassword);
             UserEntity userEntity = new UserEntity(dto);
             userRepository.save(userEntity);
@@ -57,6 +57,7 @@ public class AuthServiceImplement implements AuthService{
             return ResponseDto.databaseError();
         }
 
+        
         return SignUpResponseDto.success(); 
     }
 

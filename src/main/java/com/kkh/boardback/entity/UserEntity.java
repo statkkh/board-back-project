@@ -29,6 +29,7 @@ public class UserEntity {
     
     public UserEntity(SignUpRequestDto dto){
         this.email = dto.getEmail();
+        this.password = dto.getPassword();
         this.nickname = dto.getNickname();
         this.telNumber = dto.getTelNumber();
         this.address = dto.getAddress();
