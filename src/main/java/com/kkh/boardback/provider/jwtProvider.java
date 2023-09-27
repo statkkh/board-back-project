@@ -18,11 +18,12 @@ public class JwtProvider {
     private String secretkey;
 
     public String create(String email){
-        Date expiration = Date.from(Instant.now().plus(5, ChronoUnit.HOURS));
+        Date expiration = Date.from(Instant.now().plus(6, ChronoUnit.HOURS));
+
         String jwt = Jwts.builder()
-                                .signWith(SignatureAlgorithm.HS256, secretkey)
-                                .setSubject(email).setIssuedAt(new Date()).setExpiration(expiration)
-                                .compact();
+                        .signWith(SignatureAlgorithm.HS256, secretkey)
+                        .setSubject(email).setIssuedAt(new Date()).setExpiration(expiration)
+                        .compact();
 
         return jwt;
     }
