@@ -16,7 +16,7 @@ import com.kkh.boardback.service.FileService;
 public class FileServiceImplement implements FileService {
 
     @Value("${file.path}")
-    private String filepath;
+    private String filePath;
     @Value("${file.url}")
     private String fileUrl;
     
@@ -31,21 +31,19 @@ public class FileServiceImplement implements FileService {
         // description :  파일 명 변경 UUID 형식의 임의의 파일명 생성 //
         String uuid = UUID.randomUUID().toString();
         // description : UUID형식의 파일명 + 확장자로 새로운 파일명 생성 //
-        String saveFilename = uuid + extension;
-
+        String saveFileName = uuid + extension;
         // description : 저장할 경로 생성 //
-        String savePath = filepath + saveFilename;
+        String savePath = filePath + saveFileName;
 
         try {
             file.transferTo(new File(savePath));
-            
         
         } catch (Exception exception) {
             exception.printStackTrace();
             return null;
         }
 
-        String url = fileUrl + saveFilename;
+        String url = fileUrl + saveFileName;
         return url;
 
     }
@@ -57,7 +55,7 @@ public class FileServiceImplement implements FileService {
         
         // description : 파일 저장 경로에서 파일명에 해당하는 파일 불러오기//
         try {
-            resource = new UrlResource("file:" + filepath + fileName);    
+            resource = new UrlResource("file:" + filePath + fileName);    
             
         } catch (Exception exception) {
             exception.printStackTrace();
