@@ -11,9 +11,8 @@ import com.kkh.boardback.entity.UserEntity;
 public interface UserRepository  extends  JpaRepository< UserEntity, String >{
     // code message
     boolean existsByEmail(String email);
-    boolean existsByNickname(String nickname);
-    boolean existsByTelNumber(String telNumber);
     
+    UserEntity findByUserId(String userId);
     
     UserEntity findByEmail(String email);
 
