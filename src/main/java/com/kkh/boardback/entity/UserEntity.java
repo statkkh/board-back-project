@@ -1,11 +1,12 @@
 package com.kkh.boardback.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+    
 
 import com.kkh.boardback.dto.request.auth.SignUpRequestDto;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,13 +25,5 @@ public class UserEntity {
     private String type;
     private String role;
     
-    // public UserEntity(SignUpRequestDto dto){
-    //     this.email = dto.getEmail();
-    //     this.password = dto.getPassword();
-    //     this.nickname = dto.getNickname();
-    //     this.telNumber = dto.getTelNumber();
-    //     this.address = dto.getAddress();
-    //     this.addressDetail = dto.getAddressDetail();
-    //     this.agreedPersonal =dto.getAgreedPersonal();
-    // }
+
 }
