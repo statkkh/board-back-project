@@ -18,22 +18,19 @@ import lombok.NoArgsConstructor;
 // ! table 작업
 public class UserEntity {
     @Id
-    private String email;
+    private String userId;
     private String password;
-    private String nickname;
-    private String telNumber;
-    private String address;
-    private String addressDetail;
-    private boolean agreedPersonal;
-    private String profileImageUrl;
+    private String email;
+    private String type;
+    private String role;
     
-    public UserEntity(SignUpRequestDto dto){
-        this.email = dto.getEmail();
-        this.password = dto.getPassword();
-        this.nickname = dto.getNickname();
-        this.telNumber = dto.getTelNumber();
-        this.address = dto.getAddress();
-        this.addressDetail = dto.getAddressDetail();
-        this.agreedPersonal =dto.getAgreedPersonal();
-    }
+    // public UserEntity(SignUpRequestDto dto){
+    //     this.email = dto.getEmail();
+    //     this.password = dto.getPassword();
+    //     this.nickname = dto.getNickname();
+    //     this.telNumber = dto.getTelNumber();
+    //     this.address = dto.getAddress();
+    //     this.addressDetail = dto.getAddressDetail();
+    //     this.agreedPersonal =dto.getAgreedPersonal();
+    // }
 }
