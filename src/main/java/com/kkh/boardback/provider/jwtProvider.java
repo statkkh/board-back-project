@@ -1,5 +1,7 @@
 package com.kkh.boardback.provider;
 
+import java.nio.charset.StandardCharsets;
+import java.security.Key;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
@@ -7,9 +9,9 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtProvider {
@@ -17,34 +19,40 @@ public class JwtProvider {
     @Value("${secret-key}")
     private String secretkey;
 
-    public String create(String email){
+    public String create(String userId){
         Date expiration = Date.from(Instant.now().plus(6, ChronoUnit.HOURS));
+        Key key = Keys.hmacShaKeyFor(secretkey.getBytes(StandardCharsets.UTF_8));
 
         String jwt = Jwts.builder()
-                        .signWith(SignatureAlgorithm.HS256, secretkey)
-                        .setSubject(email).setIssuedAt(new Date()).setExpiration(expiration)
-                        .compact();
+                .signWith(key, SignatureAlgorithm.HS256)
+                .setSubject(userId).setIssuedAt(new Date()).setExpiration(expiration)
+                .compact();
 
         return jwt;
     }
 
     public String validate(String jwt){
-        String email = null;
+
+        String subject = null;
+        Key key = Keys.hmacShaKeyFor(secretkey.getBytes(StandardCharsets.UTF_8));
+
         try {
 
-            Claims claims = Jwts.parser()
-                                .setSigningKey(secretkey)
-                                .parseClaimsJws(jwt)
-                                .getBody();
+            subject = Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(jwt)
+                .getBody()
+                .getSubject();
 
-            email = claims.getSubject();                    
+
 
         } catch (Exception exception) {
             exception.printStackTrace();
             return null;
         }
 
-        return email;
+        return subject;
     }
 
 }
