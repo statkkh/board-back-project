@@ -12,4 +12,5 @@ public interface ResponseMessage {
     String NOT_EXIST_USER = "This user does exits";
 
     String DUPLICATED_ID = "Duplicated Id";
+    String MAIL_FAIL = "Mail send failed";
 }
