@@ -11,4 +11,5 @@ public interface ResponseCode {
     String SIGN_IN_FAILED = "SF";
     String NOT_EXIST_USER = "NU";
 
+    String DUPLICATED_ID = "DI";
 }

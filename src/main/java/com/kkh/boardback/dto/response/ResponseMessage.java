@@ -1,7 +1,7 @@
 package com.kkh.boardback.dto.response;
 
 public interface ResponseMessage {
-   
+    
     String VALIDATION_FAILED = "Validation Failed.";
     String SUCCESS = "Succss.";
     String DUPLICATED_EMAIL = "Duplicated email.";
@@ -10,4 +10,6 @@ public interface ResponseMessage {
     String SIGN_IN_FAILED = "Login information mismatch";
     String DATABASE_ERROR = "DataBase error.";
     String NOT_EXIST_USER = "This user does exits";
+
+    String DUPLICATED_ID = "Duplicated Id";
 }
