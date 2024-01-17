@@ -12,4 +12,5 @@ public interface ResponseCode {
     String NOT_EXIST_USER = "NU";
 
     String DUPLICATED_ID = "DI";
+    String MAIL_FAIL = "MF";
 }
