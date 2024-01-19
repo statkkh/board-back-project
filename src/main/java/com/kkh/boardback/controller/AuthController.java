@@ -49,6 +49,12 @@ public class AuthController {
         return response;
     }
 
-
+    @PostMapping("/check-certification")
+    public ResponseEntity< ? super CheckCertificationResponseDto> checkCertification(
+        @RequestBody @Valid CheckCertificationRequestDto requestBody
+    ){
+        ResponseEntity< ? super CheckCertificationResponseDto> response = authService.checkCertification(requestBody);
+        return response;
+    }
 
 }
