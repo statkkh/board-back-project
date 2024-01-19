@@ -8,4 +8,6 @@ import com.kkh.boardback.entity.CertificationEntity;
 @Repository
 public interface CertificationRepository extends JpaRepository< CertificationEntity,String>{
     
+    CertificationEntity findByUserId(String userId);
+
 }
