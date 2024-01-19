@@ -8,9 +8,9 @@ import com.kkh.boardback.entity.UserEntity;
 
 
 @Repository
-public interface UserRepository  extends  JpaRepository< UserEntity, String >{
+public interface UserRepository  extends  JpaRepository< UserEntity, String>{
     // code message
-    boolean existsByEmail(String email);
+    boolean existsByUserId(String userId);
     
     UserEntity findByUserId(String userId);
     
