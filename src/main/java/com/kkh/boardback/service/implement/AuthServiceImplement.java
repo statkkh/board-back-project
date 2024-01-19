@@ -6,10 +6,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kkh.boardback.common.CertificationNumber;
+import com.kkh.boardback.dto.request.auth.CheckCertificationRequestDto;
 import com.kkh.boardback.dto.request.auth.EmailCertificationRequestDto;
 import com.kkh.boardback.dto.request.auth.IdCheckRequestDto;
 import com.kkh.boardback.dto.request.auth.SignInRequestDto;
 import com.kkh.boardback.dto.request.auth.SignUpRequestDto;
+import com.kkh.boardback.dto.response.auth.CheckCertificationResponseDto;
 import com.kkh.boardback.dto.response.auth.EmailCertificationResponseDto;
 import com.kkh.boardback.dto.response.auth.IdCheckResponseDto;
 import com.kkh.boardback.dto.response.auth.SignInResponseDto;
@@ -77,6 +79,29 @@ public class AuthServiceImplement implements AuthService{
         }
 
         return EmailCertificationResponseDto.success();
+    }
+
+    @Override
+    public ResponseEntity<? super CheckCertificationResponseDto> checkCertification(CheckCertificationRequestDto dto) {
+        
+        try {
+            
+            String userId = dto.getId();
+            String email = dto.getEmail();
+            String certificationNumber = dto.getCertificationNumber();
+
+            CertificationEntity certificationEntity = certificationRepository.findByUserId(userId);
+            if(certificationEntity == null) return CheckCertificationResponseDto.certificationFail();
+
+            boolean isMatched = certificationEntity.getEmail().equals(email) && certificationEntity.getCertificationNumber().equals(certificationNumber);
+            if(!isMatched) CheckCertificationResponseDto.certificationFail();
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+
+        return CheckCertificationResponseDto.success();
     }
     
 
