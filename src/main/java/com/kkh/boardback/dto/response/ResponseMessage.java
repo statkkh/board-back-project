@@ -13,4 +13,5 @@ public interface ResponseMessage {
 
     String DUPLICATED_ID = "Duplicated Id";
     String MAIL_FAIL = "Mail send failed";
+    String CERTIFICATION_FAIL = "Certification failed";
 }

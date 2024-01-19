@@ -13,4 +13,5 @@ public interface ResponseCode {
 
     String DUPLICATED_ID = "DI";
     String MAIL_FAIL = "MF";
+    String CERTIFICATION_FAIL = "CF";
 }
