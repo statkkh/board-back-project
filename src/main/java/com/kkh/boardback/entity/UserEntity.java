@@ -25,5 +25,12 @@ public class UserEntity {
     private String type;
     private String role;
     
+    public UserEntity(String userId,String email, String type){
+        this.userId = userId;
+        this.password = password;
+        this.email = email;
+        this.type = type;
+        this.role = "ROLE_USER";
+    }
 
 }
