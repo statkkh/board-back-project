@@ -1,7 +1,8 @@
 package com.kkh.boardback.dto.request.auth;
 
-import javax.validation.constraints.NotBlank;
+    
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,10 +11,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class SignInRequestDto {
+    
     @NotBlank
-    private String email;
+    private String id;
 
     @NotBlank
     private String password;
-
 }
