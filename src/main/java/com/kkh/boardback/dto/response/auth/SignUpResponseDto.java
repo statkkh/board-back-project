@@ -29,13 +29,18 @@ public class SignUpResponseDto  extends ResponseDto{
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
     }
 
-    public static ResponseEntity<ResponseDto> duplicatedNickname(){
-        ResponseDto  result  = new ResponseDto(ResponseCode.DUPLICATED_NICKNAME, ResponseMessage.DUPLICATED_NICKNAME);
+    public static ResponseEntity<ResponseDto> duplicatedPassword(){
+        ResponseDto  result  = new ResponseDto(ResponseCode.DUPLICATED_PASSWORD, ResponseMessage.DUPLICATED_PASSWORD);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
     }
     
-    public static ResponseEntity<ResponseDto> duplicatedTelNumber(){
-        ResponseDto  result  = new ResponseDto(ResponseCode.DUPLICATED_TELNUMBER, ResponseMessage.DUPLICATED_TELNUMBER);
+    public static ResponseEntity<ResponseDto> duplicatedId(){
+        ResponseDto  result  = new ResponseDto(ResponseCode.DUPLICATED_ID, ResponseMessage.DUPLICATED_ID);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
     }
+
+    public static ResponseEntity<ResponseDto> certificationFail(){
+        ResponseDto responseBody = new ResponseDto(ResponseCode.CERTIFICATION_FAIL, ResponseMessage.CERTIFICATION_FAIL);
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(responseBody);
+    }    
 }
