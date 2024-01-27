@@ -18,4 +18,11 @@ public interface AuthService {
     ResponseEntity< ? super IdCheckResponseDto> idCheck(IdCheckRequestDto dto);
     ResponseEntity< ? super EmailCertificationResponseDto> emailCertification(EmailCertificationRequestDto dto);
     ResponseEntity< ? super CheckCertificationResponseDto> checkCertification(CheckCertificationRequestDto dto);
+    ResponseEntity< ? super SignUpResponseDto> signUp(SignUpRequestDto dto);
+    // ResponseEntity< ? super SignInResponseDto> signUp(SignInRequestDto dto);
+    
 }
+
+// https://www.youtube.com/watch?v=PnM_IIXvzpg&t=381s
+
+// https://www.youtube.com/watch?v=Qtv-3rq5K2U&t=142s
