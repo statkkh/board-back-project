@@ -1,5 +1,6 @@
 package com.kkh.boardback.service.implement;
 
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -103,9 +104,44 @@ public class AuthServiceImplement implements AuthService{
 
         return CheckCertificationResponseDto.success();
     }
+
+    @Override
+    public ResponseEntity<? super SignUpResponseDto> signUp(SignUpRequestDto dto) {
+        
+        try {
+            
+            String userId = dto.getId();
+            boolean existedByUserId = userRepository.existsByUserId(userId);
+            if(!existedByUserId) return SignUpResponseDto.duplicatedId();
+
+            String email = dto.getEmail();
+            String certificationNumber = dto.getCertificationNumber();
+            
+            CertificationEntity certificationEntity = certificationRepository.findByUserId(userId);
+            
+            boolean isMatched = certificationEntity.getEmail().equals(email) && certificationEntity.getCertificationNumber().equals(certificationNumber);
+            if(!isMatched) return SignUpResponseDto.certificationFail();
+
+            String password = dto.getPassword();
+            String encodedPassword = passwordEncoder.encode(password);
+            dto.setPassword(encodedPassword);
+
+            UserEntity userEntity = new UserEntity(dto);
+            userRepository.save(userEntity);
+            // UserEntity userEntity = new UserEntity(dto);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+
+        return SignUpResponseDto.success();
+    }
     
 
 
 
 
 }
+
+
