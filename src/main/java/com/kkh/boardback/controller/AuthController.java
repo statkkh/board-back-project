@@ -57,4 +57,11 @@ public class AuthController {
         return response;
     }
 
+    @PostMapping("/sign-up")
+    public ResponseEntity< ? super SignUpResponseDto> signUp(
+        @RequestBody @Valid SignUpRequestDto dto
+    ){
+        ResponseEntity< ? super SignUpResponseDto> response = authService.signUp(dto);
+        return response;
+    }
 }
