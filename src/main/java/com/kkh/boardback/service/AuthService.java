@@ -19,7 +19,7 @@ public interface AuthService {
     ResponseEntity< ? super EmailCertificationResponseDto> emailCertification(EmailCertificationRequestDto dto);
     ResponseEntity< ? super CheckCertificationResponseDto> checkCertification(CheckCertificationRequestDto dto);
     ResponseEntity< ? super SignUpResponseDto> signUp(SignUpRequestDto dto);
-    // ResponseEntity< ? super SignInResponseDto> signUp(SignInRequestDto dto);
+    ResponseEntity< ? super SignInResponseDto> signIn(SignInRequestDto dto);
     
 }
 

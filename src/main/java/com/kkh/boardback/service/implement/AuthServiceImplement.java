@@ -137,6 +137,32 @@ public class AuthServiceImplement implements AuthService{
 
         return SignUpResponseDto.success();
     }
+
+    @Override
+    public ResponseEntity<? super SignInResponseDto> signIn(SignInRequestDto dto) {
+        
+        String token = null;
+
+        try {
+
+            String userId = dto.getId();
+            UserEntity userEntity = userRepository.findByUserId(userId);
+            if(userEntity == null) return SignInResponseDto.signInfailed();
+
+            String password = dto.getPassword();
+            String encodedpassword = userEntity.getPassword();
+            boolean isMatched = passwordEncoder.matches(password, encodedpassword);
+            if(!isMatched)  return SignInResponseDto.signInfailed();
+
+            token = jwtProvider.create(userId);
+            
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+        return SignInResponseDto.success(token);
+    }
     
 
 
